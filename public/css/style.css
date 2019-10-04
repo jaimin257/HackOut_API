@@ -1,0 +1,63 @@
+body {
+  width: 100%;
+  height: 100%;
+}
+main {
+  height: 100%;
+  width: 100%;
+}
+.nav-wrapper .fa-bars{
+  font-size:25px;
+}
+.story-text{
+  height:120px;
+}
+
+.dash-status{
+  text-transform: capitalize;
+}
+
+#delete-form{
+  display:inline;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+.wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  background-image: url("../images/daiict.jpg");
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100%;
+  width: 100%;
+}
+.image:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+}
+.text {
+  color: #FFF;
+  position: relative;
+  font-size: 70px;
+  font-weight: bold;
+  align-content: center;
+  text-align: center;
+  padding: 5% 0;
+}
+
+.middle{
+  position: relative;
+}

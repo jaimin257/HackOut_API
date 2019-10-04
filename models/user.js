@@ -29,6 +29,10 @@ const userSchema = Schema({
     userFlag: {
         type: String,
         required: true
+    },
+    verified: {
+        type: Boolean,
+        required: true
     }
 });
 
