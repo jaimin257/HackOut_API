@@ -1,0 +1,50 @@
+{"code":"EAUTH","response":"535 5.7.8 Error: authentication failed: authentication failure","responseCode":535,"command":"AUTH PLAIN","level":"error"}
+{"code":"EAUTH","response":"535 5.7.8 Error: authentication failed: authentication failure","responseCode":535,"command":"AUTH PLAIN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"172.217.166.165","port":465,"command":"CONN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"74.125.24.108","port":465,"command":"CONN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"74.125.24.108","port":465,"command":"CONN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"74.125.24.108","port":465,"command":"CONN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"74.125.24.109","port":465,"command":"CONN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"74.125.24.109","port":465,"command":"CONN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"74.125.24.109","port":465,"command":"CONN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"74.125.24.109","port":465,"command":"CONN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"74.125.24.109","port":465,"command":"CONN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"74.125.24.109","port":465,"command":"CONN","level":"error"}
+{"code":"EAUTH","response":"535 5.7.8 Error: authentication failed: authentication failure","responseCode":535,"command":"AUTH PLAIN","level":"error"}
+{"code":"EAUTH","response":"535 5.7.8 Error: authentication failed: authentication failure","responseCode":535,"command":"AUTH PLAIN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"74.125.24.108","port":465,"command":"CONN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"74.125.24.108","port":465,"command":"CONN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"74.125.24.108","port":465,"command":"CONN","level":"error"}
+{"code":"EAUTH","response":"535 5.7.8 Error: authentication failed: authentication failure","responseCode":535,"command":"AUTH PLAIN","level":"error"}
+{"code":"EAUTH","command":"API","level":"error"}
+{"code":"EAUTH","command":"API","level":"error"}
+{"code":"EAUTH","command":"API","level":"error"}
+{"code":"EAUTH","command":"API","level":"error"}
+{"code":"EAUTH","command":"API","level":"error"}
+{"code":"EAUTH","command":"API","level":"error"}
+{"code":"EAUTH","command":"API","level":"error"}
+{"code":"EAUTH","command":"API","level":"error"}
+{"code":"EAUTH","command":"API","level":"error"}
+{"code":"EAUTH","command":"API","level":"error"}
+{"code":"EAUTH","response":"535 5.7.8 Error: authentication failed: authentication failure","responseCode":535,"command":"AUTH PLAIN","level":"error"}
+{"code":"EAUTH","response":"535 5.7.8 Error: authentication failed: authentication failure","responseCode":535,"command":"AUTH PLAIN","level":"error"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"code":"EAUTH","response":"535 5.7.8 Error: authentication failed: authentication failure","responseCode":535,"command":"AUTH PLAIN","level":"error"}
+{"message":"Mail server is ready to take our messages","level":"info"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"127.0.0.1","port":587,"command":"CONN","level":"error"}
+{"errno":"ECONNREFUSED","code":"ESOCKET","syscall":"connect","address":"127.0.0.1","port":587,"command":"CONN","level":"error"}
+{"message":"Mail server is ready to take our messages","level":"info"}

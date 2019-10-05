@@ -19,22 +19,28 @@ mongoose.connect(db, { useNewUrlParser: true })
     .then(() => console.log('MongoDB connection establlished'))
     .catch(err => console.log(err));
 
+// BodyParser
+app.use(express.urlencoded({ extended: false }));
+
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 const PORT = process.nextTick.PORT || 1433;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.listen(PORT, console.log(`Server started on port ${PORT}`));
+
+
+
+// FrontEnd...  ###########################################
 app.use(express.static(path.join(__dirname, 'public')));
 app.engine('handlebars', exphbs({ 
     defaultLayout:'main' 
   })); 
   app.set('view engine', 'handlebars')
 
-app.listen(PORT, console.log(`Server started on port ${PORT}`));
-
 //Routes
 app.use('/account',require('./routes/account'));
 app.use('/events',require('./routes/events'));
-
-
-

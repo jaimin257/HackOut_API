@@ -5,8 +5,10 @@ const Event = require('../models/events')
 
 // const passport = require('passport');
 // const passportConf = require('../passport');
+const passport = require('passport');
+const passportConf = require('../passport');
 
-// const AccountController = require('../controllers/account');
+const AccountController = require('../controllers/account');
 
 // frontend routes
 router.get('/',(req,res) => {
@@ -23,12 +25,16 @@ router.get('/login',(req,res) => {
 //     .post(
 //         AccountController.signUp
 //     );
+router.route('/signUp')
+    .post(
+        AccountController.signUp
+    );
 
-// router.route('/logIn')
-//     .post(
-//         passport.authenticate('local', { session: false }),
-//         AccountController.logIn
-//     );
+router.route('/logIn')
+    .post(
+        passport.authenticate('local', { session: false }),
+        AccountController.logIn
+    );
 
 // router.route('/logOut')
 //     .get(
