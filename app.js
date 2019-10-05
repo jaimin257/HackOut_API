@@ -31,6 +31,7 @@ app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
 //Routes
 app.use('/',require('./routes/account'));
+app.use('/account',require('./routes/account'));
 
 
 

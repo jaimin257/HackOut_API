@@ -33,6 +33,14 @@ const userSchema = Schema({
     verified: {
         type: Boolean,
         required: true
+    },
+    college: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
     }
 });
 

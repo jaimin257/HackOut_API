@@ -3,17 +3,17 @@ const router = express.Router();
 const passport = require('passport');
 const passportConf = require('../passport');
 
-// const AccountController = require('../controllers/account');
+const AccountController = require('../controllers/account');
 
 // frontend routes
 router.get('/',(req,res) => {
     res.render('index/welcome');
 });
 
-// router.route('/signUp')
-//     .post(
-//         AccountController.signUp
-//     );
+router.route('/signUp')
+    .post(
+        AccountController.signUp
+    );
 
 // router.route('/logIn')
 //     .post(
