@@ -81,3 +81,4 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Routes
 app.use('/account',require('./routes/account'));
 app.use('/events',require('./routes/events'));
+app.use('/colleges',require('./routes/colleges'));

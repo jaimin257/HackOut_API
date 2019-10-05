@@ -20,13 +20,18 @@ router.get('/signUp',(req,res) => {
     res.render('index/register');
 });
 
-router.route('/signUp').post(
-    AccountController.signUp);
+router.route('/signUpS').post(
+    AccountController.signUpS);
+
+router.route('/signUpC').post(
+    AccountController.signUpC);
 
 router.get('/logIn',(req,res) => {
     res.render('index/login');
 });
-
+router.route('/temp').post(
+    AccountController.temp
+);
 router.route('/logIn').post(
         AccountController.logIn
     );

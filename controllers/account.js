@@ -1,5 +1,7 @@
 const errorMessages = require('../configuration/error');
 const User = require('../models/user');
+const College = require('../models/college');
+
 const cookieParser = require('cookie-parser'); // in order to read cookie sent from client
 var store = require('store');
 const randomstring = require('randomstring');
@@ -33,7 +35,20 @@ const signToken = emailId => {
 
 module.exports = {
     //Register user
-    signUp: async (req, res, next) => {
+    temp: async (req,res,next) => {
+        const {which} = req.body;
+        console.log("hell0o");
+        if(which == "s")
+        {
+            res.render('index/student_register');
+        }
+        else
+        {
+            res.render('index/college_register');
+        }
+    },
+    signUpS: async (req, res, next) => {
+
         const {email, password, password2, name, phone, gender, college} = req.body;
         console.log("register function : " + email);
 
@@ -103,30 +118,97 @@ module.exports = {
     
         
     },
+    signUpC: async (req, res, next) => {
 
+        const {collegeEmail,collegeAddress, password, password2, collegeName, collegePhone,} = req.body;
+
+        //Check required fields
+        if(!collegeEmail || !password || !password2) {
+            res.status(httpStatusCodes.PRECONDITION_FAILED)
+                .send(errorMessages.requiredFieldsEmpty);
+        } else {
+            console.log('validation passed');
+            
+            // validation passed
+            const CollegeFound = await College.findOne({ collegeEmail: collegeEmail })
+                .then()
+                .catch(err => {
+                    console.log(err);
+                    res.status(httpStatusCodes.FORBIDDEN)
+                        .send(errorMessages.userNotExist);
+                });    
+
+            if(CollegeFound) {
+                res.status(httpStatusCodes.FORBIDDEN)
+                        .send(errorMessages.userAlreadyExist);
+            } else {
+                console.log('not found');
+
+                if(collegeName == undefined) collegeName = 'None';
+                if(collegeEmail == undefined) collegeEmail = 'None';
+                if(collegePhone == undefined) collegePhone = 'None'; 
+                if(collegeAddress == undefined) collegeAddress = 'None';
+                const newCollege = new College({
+                    collegeName,
+                    collegeEmail,
+                    password,
+                    collegePhone,
+                    collegeAddress,
+                });
+
+                console.log(newCollege);
+
+                // Hash password
+                const salt = await bcrypt.genSalt(10);
+                const hashedPassword = await bcrypt.hash(req.body.password, salt);
+                newCollege.password = hashedPassword;
+
+                console.log(hashedPassword);
+                
+                await newCollege.save()
+                .then(college => {
+                    console.log('User Registered');
+                    // res.status(httpStatusCodes.OK)
+                    //     .json({ user: user});
+                    res.redirect('/account/logIn');
+                })
+                .catch(err => {
+                    console.log('err');
+                    res.status(httpStatusCodes.FORBIDDEN)
+                        .send(errorMessages.errorSavingUser);
+                });
+            }
+        };
+    
+        
+    },
     logIn: async (req, res, next) => {
-        const { email,password } = req.body;
-        const token = signToken(email);
-
-        console.log('LogIn...');
+        const { email,password, which } = req.body;
+        console.log(req.body.which);
         console.log('email : ' + email);
-
+        if(which == "s"){
         const userFound = await User.findOne({ email });
 
         if(!userFound) {
             return res.status(httpStatusCodes.FORBIDDEN)
                 .send(errorMessages.userNotRegistered);
         } else {
-            console.log(userFound);
+            // console.log(userFound);
             globals.user = userFound;
             res.redirect('/events/public2');
-            // res.status(httpStatusCodes.OK)
-            // .json({
-            //     cname1: 'cookiesNamejwt',
-            //     cvalue1: token,
-            //     cexpire: Date(Date.now() + JWT_EXPIRY_TIME * 24 * 60 * 60 * 1000),
-            //     user : userFound
-            // });
+        }
+        } else {
+            const collegeFound = await College.findOne({ collegeEmail : email });
+
+        if(!collegeFound) {
+            return res.status(httpStatusCodes.FORBIDDEN)
+                .send(errorMessages.userNotRegistered);
+        } else {
+            // console.log(userFound);
+            console.log("coll");
+            globals.user = collegeFound;
+            res.redirect('/events/public2');
+        }
         }
     },
 
