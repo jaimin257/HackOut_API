@@ -1,0 +1,20 @@
+<div class="row">
+  {{#each events}}
+    <div class="col s12 m4">
+      <div class="card">
+        <div class="card-content center-align">
+        <div><strong>Event Name : </strong>{{title}}</div>
+    <div><strong>Event information : </strong> {{information}}</div>
+    <div><strong>College Name : </strong>{{college_name}}</div>
+    <div><strong>Time : </strong>{{time}}</div>
+    <div><strong>Venue : </strong>{{venue}}</div>
+        </div>
+        <div class="card-action center-align">
+          <a class="btn grey" href="/stories/show/{{id}}">Read More</a>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <p>No stories found</p>
+  {{/each}}
+</div>

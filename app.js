@@ -4,6 +4,7 @@ const passport = require('passport');
 const cors = require('cors');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const app = express();
 app.use(cors());
@@ -26,29 +27,20 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 const PORT = process.nextTick.PORT || 1433;
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
-
-//Routes
-app.use('/',require('./routes/account'));
-app.use('/account',require('./routes/account'));
-
-
 
 
 
 // FrontEnd...  ###########################################
 app.use(express.static(path.join(__dirname, 'public')));
 app.engine('handlebars', exphbs({ 
-    // helpers: { 
-    // //   truncate: truncate, 
-    // //   stripTags: stripTags, 
-    // //   formatDate:formatDate, 
-    // //   select:select, 
-    // //   editIcon: editIcon 
-    // }, 
     defaultLayout:'main' 
   })); 
   app.set('view engine', 'handlebars')
 
-
+//Routes
+app.use('/account',require('./routes/account'));
+app.use('/events',require('./routes/events'));

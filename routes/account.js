@@ -1,5 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
+const Event = require('../models/events')
+
+// const passport = require('passport');
+// const passportConf = require('../passport');
 const passport = require('passport');
 const passportConf = require('../passport');
 
@@ -10,6 +15,16 @@ router.get('/',(req,res) => {
     res.render('index/welcome');
 });
 
+router.get('/login',(req,res) => {
+    res.render('index/login');
+});
+
+
+
+// router.route('/signUp')
+//     .post(
+//         AccountController.signUp
+//     );
 router.route('/signUp')
     .post(
         AccountController.signUp
