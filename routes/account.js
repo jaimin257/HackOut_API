@@ -15,11 +15,11 @@ router.route('/signUp')
         AccountController.signUp
     );
 
-// router.route('/logIn')
-//     .post(
-//         passport.authenticate('local', { session: false }),
-//         AccountController.logIn
-//     );
+router.route('/logIn')
+    .post(
+        passport.authenticate('local', { session: false }),
+        AccountController.logIn
+    );
 
 // router.route('/logOut')
 //     .get(

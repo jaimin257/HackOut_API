@@ -34,7 +34,7 @@ const signToken = emailId => {
 module.exports = {
     //Register user
     signUp: async (req, res, next) => {
-        const {email, password, password2, name, phone, address, gender, about, userFlag, college,verified} = req.body;
+        const {email, password, password2, name, phone, address, gender, about, userFlag, college} = req.body;
         console.log("register function : " + email);
 
         //Check required fields
@@ -66,6 +66,7 @@ module.exports = {
                 if(address == undefined) address = 'None';
                 if(userFlag == undefined) userFlag = 'None';
                 if(college == undefined) college = 'None';
+                let verified = 'true';  // ###########################################33
 
                 const newUser = new User({
                     name,
@@ -103,4 +104,62 @@ module.exports = {
             }
         }
     },
+
+
+
+
+
+
+    logIn: async (req, res, next) => {
+        const { email,password } = req.body;
+        const token = signToken(email);
+
+        console.log('LogIn...');
+        console.log('email : ' + email);
+
+        const userFound = await User.findOne({ email });
+
+        if(!userFound) {
+            return res.status(httpStatusCodes.FORBIDDEN)
+                .send(errorMessages.userNotRegistered);
+        } else {
+            console.log(userFound);
+            res.status(httpStatusCodes.OK)
+            .json({
+                cname1: 'cookiesNamejwt',
+                cvalue1: token,
+                cexpire: Date(Date.now() + JWT_EXPIRY_TIME * 24 * 60 * 60 * 1000),
+                user : userFound
+            });
+        }
+    },
+
+    logOut: async (req, res, next) => {
+        console.log('clearing cookies...');
+        res.clearCookie('jwt');
+        res.status(httpStatusCodes.OK)
+            .json({});
+    },
+
+    getUser: async (req, res, next) => {
+        const {userId} = req.body;
+        console.log('getUser : ' +userId);
+
+        await User.findById(userId)
+            .then(foundUser => {
+                if(!foundUser)
+                {
+                    res.status(httpStatusCodes.FORBIDDEN)
+                        .send(errorMessages.userNotExist);
+                } else {
+                    res.status(httpStatusCodes.OK)
+                        .json({user : foundUser});
+                }
+            })
+            .catch(err => {
+                res.status(httpStatusCodes.FORBIDDEN)
+                        .send(errorMessages.userNotExist);
+            });
+    },
+
 };
