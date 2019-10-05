@@ -21,8 +21,13 @@ router.post('/add', (req, res) => {
     new Event(newStory)
       .save()
       .then(story => {
-        res.send("success");
-      });
+        Event.find()
+        .then(events => {
+          res.render('events/show_events', {
+            events: events
+          });
+        }); 
+     });
   });
 
 router.get('/public', (req, res) => {
