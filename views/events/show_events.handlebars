@@ -1,3 +1,9 @@
+ {{#if user}}
+  {{> _header}}
+{{else}}
+  {{> _header2}}
+
+{{/if}}
 <div class="row">
   {{#each events}}
     <div class="col-md-4 s12 m4">

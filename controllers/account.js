@@ -1,7 +1,7 @@
 const errorMessages = require('../configuration/error');
 const User = require('../models/user');
 const cookieParser = require('cookie-parser'); // in order to read cookie sent from client
-
+var store = require('store');
 const randomstring = require('randomstring');
 const mustache = require('mustache');
 const bcrypt = require('bcryptjs');
@@ -118,15 +118,8 @@ module.exports = {
                 .send(errorMessages.userNotRegistered);
         } else {
             console.log(userFound);
-            globals.user= email;
-        
-            // Set cookie
-            res.cookie('user', userFound); // options is optional
-            console.log(req.cookie);
-            res.redirect('/events/public');
-            res.send('');
-
-
+            globals.user = userFound;
+            res.redirect('/events/public2');
             // res.status(httpStatusCodes.OK)
             // .json({
             //     cname1: 'cookiesNamejwt',
@@ -138,9 +131,8 @@ module.exports = {
     },
 
     logOut: async (req, res, next) => {
-        console.log('clearing cookies...');
-        globals.user = 'none';
-
+        globals.user = "none";
+        res.redirect('/events/public');
     },
 
     getUser: async (req, res, next) => {

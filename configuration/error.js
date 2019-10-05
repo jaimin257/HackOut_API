@@ -14,5 +14,6 @@ module.exports = {
     someThingWentWrong: 'Some thing went wrong',
     invalidToken: 'Invalid Token',
     sessionExpired: 'Session Expired',
+    pleaseLogInFirst: 'Please Login First',
     signUpRequestExpired: 'Your verification link has expired. Sign up again',
 };
