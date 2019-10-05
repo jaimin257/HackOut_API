@@ -26,6 +26,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Set global vars
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  next();
+});
+
 const PORT = process.nextTick.PORT || 1433;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -34,7 +34,7 @@ const signToken = emailId => {
 module.exports = {
     //Register user
     signUp: async (req, res, next) => {
-        const {email, password, password2, name, phone, address, gender, about, userFlag, college} = req.body;
+        const {email, password, password2, name, phone, gender, college} = req.body;
         console.log("register function : " + email);
 
         //Check required fields
@@ -63,22 +63,18 @@ module.exports = {
                 if(email == undefined) email = 'None';
                 if(gender == undefined) gender = 'None';
                 if(phone == undefined) phone = 'None'; 
-                if(address == undefined) address = 'None';
-                if(userFlag == undefined) userFlag = 'None';
                 if(college == undefined) college = 'None';
-                let verified = 'true';  // ###########################################33
-
+                let verified = 'true';  
+                let userFlag = 'none';
                 const newUser = new User({
                     name,
                     email,
                     password,
                     phone,
                     gender,
-                    address, 
                     userFlag,
                     college,
                     verified,
-                    about
                 });
 
                 console.log(newUser);
@@ -93,8 +89,9 @@ module.exports = {
                 await newUser.save()
                 .then(user => {
                     console.log('User Registered');
-                    res.status(httpStatusCodes.OK)
-                        .json({ user: user});
+                    // res.status(httpStatusCodes.OK)
+                    //     .json({ user: user});
+                    res.redirect('/account/logIn');
                 })
                 .catch(err => {
                     console.log('err');
@@ -102,13 +99,10 @@ module.exports = {
                         .send(errorMessages.errorSavingUser);
                 });
             }
-        }
+        };
+    
+        
     },
-
-
-
-
-
 
     logIn: async (req, res, next) => {
         const { email,password } = req.body;
@@ -124,13 +118,15 @@ module.exports = {
                 .send(errorMessages.userNotRegistered);
         } else {
             console.log(userFound);
-            res.status(httpStatusCodes.OK)
-            .json({
-                cname1: 'cookiesNamejwt',
-                cvalue1: token,
-                cexpire: Date(Date.now() + JWT_EXPIRY_TIME * 24 * 60 * 60 * 1000),
-                user : userFound
-            });
+            res.redirect('/events/public');
+
+            // res.status(httpStatusCodes.OK)
+            // .json({
+            //     cname1: 'cookiesNamejwt',
+            //     cvalue1: token,
+            //     cexpire: Date(Date.now() + JWT_EXPIRY_TIME * 24 * 60 * 60 * 1000),
+            //     user : userFound
+            // });
         }
     },
 

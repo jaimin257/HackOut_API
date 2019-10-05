@@ -9,9 +9,10 @@
         <li><a href="/dashboard">Welcome {{user.firstName}}</a></li>
         <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
         {{else}}
-        <li><a href="/events"><i class="fa fa-book"></i> Events</a></li>
+        <li><a href="/events/public"><i class="fa fa-book"></i> Events</a></li>
         <li><a href="/events/add_event"><i class="fa fa-book"></i> Add event</a></li>
-        <li><a href="/login"><i class="fa fa-book"></i> Login</a></li>
+        <li><a href="/account/logIn"><i class="fa fa-book"></i> Login</a></li>
+        <li><a href="/account/signUp"><i class="fa fa-book"></i> Register</a></li>
 
         {{/if}}
       </ul>

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const Event = require('../models/events')
+const User = require('../models/user')
 
 // const passport = require('passport');
 // const passportConf = require('../passport');
@@ -15,23 +15,19 @@ router.get('/',(req,res) => {
     res.render('index/welcome');
 });
 
-router.get('/login',(req,res) => {
+
+router.get('/signUp',(req,res) => {
+    res.render('index/register');
+});
+
+router.route('/signUp').post(
+    AccountController.signUp);
+
+router.get('/logIn',(req,res) => {
     res.render('index/login');
 });
 
-
-
-// router.route('/signUp')
-//     .post(
-//         AccountController.signUp
-//     );
-router.route('/signUp')
-    .post(
-        AccountController.signUp
-    );
-
-router.route('/logIn')
-    .post(
+router.route('/logIn').post(
         passport.authenticate('local', { session: false }),
         AccountController.logIn
     );
