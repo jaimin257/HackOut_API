@@ -5,7 +5,8 @@ const cors = require('cors');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const bodyParser = require('body-parser');
-
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 const app = express();
 app.use(cors());
 
@@ -26,12 +27,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+
 // Set global vars
 app.use((req, res, next) => {
   res.locals.user = req.user || null;
   next();
 });
-
+app.use(cookieParser());
 const PORT = process.nextTick.PORT || 1433;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

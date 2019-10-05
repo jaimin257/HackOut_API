@@ -28,16 +28,13 @@ router.get('/logIn',(req,res) => {
 });
 
 router.route('/logIn').post(
-        passport.authenticate('local', { session: false }),
         AccountController.logIn
     );
 
-// router.route('/logOut')
-//     .get(
-//         passportConf.checkToken,
-//         passportConf.jwtVerifier,
-//         AccountController.logOut
-//     );
+router.route('/logOut')
+    .get(
+        AccountController.logOut
+    );
 
 // router.route('/profile')
 //     .post(

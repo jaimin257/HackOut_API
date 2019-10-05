@@ -5,7 +5,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user');
 const httpStatusCodes = require('http-status-codes');
 const JWT = require(`jsonwebtoken`);
-
+const cookieParser = require('cookie-parser'); // in order to read cookie sent from client
 
 module.exports = {
 // JWT strategy...
@@ -73,3 +73,11 @@ passport.use(new LocalStrategy({
         done(error, false);
     }
 }));
+
+passport.serializeUser((user, done) => {
+    done(null, user);
+  });
+
+  passport.deserializeUser((id, done) => {
+    User.findById(email).then(user => done(null, user));
+  });

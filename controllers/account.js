@@ -1,6 +1,6 @@
 const errorMessages = require('../configuration/error');
 const User = require('../models/user');
-
+const cookieParser = require('cookie-parser'); // in order to read cookie sent from client
 
 const randomstring = require('randomstring');
 const mustache = require('mustache');
@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs');
 const httpStatusCodes = require('http-status-codes');
 const JWT = require(`jsonwebtoken`);
 const util = require('util');
-
+const globals = require('../configuration/globals');
 const {
     JWT_SECRET,
     JWT_EXPIRY_TIME,
@@ -118,7 +118,14 @@ module.exports = {
                 .send(errorMessages.userNotRegistered);
         } else {
             console.log(userFound);
+            globals.user= email;
+        
+            // Set cookie
+            res.cookie('user', userFound); // options is optional
+            console.log(req.cookie);
             res.redirect('/events/public');
+            res.send('');
+
 
             // res.status(httpStatusCodes.OK)
             // .json({
@@ -132,9 +139,8 @@ module.exports = {
 
     logOut: async (req, res, next) => {
         console.log('clearing cookies...');
-        res.clearCookie('jwt');
-        res.status(httpStatusCodes.OK)
-            .json({});
+        globals.user = 'none';
+
     },
 
     getUser: async (req, res, next) => {
@@ -159,3 +165,4 @@ module.exports = {
     },
 
 };
+
