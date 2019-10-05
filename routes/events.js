@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Event = require('../models/events');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const errorMessages = require('../configuration/error');
+    const errorMessages = require('../configuration/error');
 const globals = require('../configuration/globals');
 const httpStatusCodes = require('http-status-codes');
 // app.post('/login', 

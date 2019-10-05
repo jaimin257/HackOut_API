@@ -194,7 +194,7 @@ module.exports = {
                 .send(errorMessages.userNotRegistered);
         } else {
             // console.log(userFound);
-            globals.user = userFound;
+            globals.user = userFound.email;
             res.redirect('/events/public2');
         }
         } else {
@@ -206,7 +206,7 @@ module.exports = {
         } else {
             // console.log(userFound);
             console.log("coll");
-            globals.user = collegeFound;
+            globals.user = collegeFound.collegeEmail;
             res.redirect('/events/public2');
         }
         }

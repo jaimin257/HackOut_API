@@ -16,4 +16,5 @@ module.exports = {
     sessionExpired: 'Session Expired',
     pleaseLogInFirst: 'Please Login First',
     signUpRequestExpired: 'Your verification link has expired. Sign up again',
+    notAuthorized: "You are not allowed to add courses"
 };

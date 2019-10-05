@@ -1,0 +1,65 @@
+  {{> _header}}
+<div class="row">
+ <div class="container">
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin: 0 auto; position: relative; left: 40%; margin-top: 3%;">
+    Add new Course
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add Course</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+          <div class="row" style="margin: 0 auto; font-size: 40px;">
+    <form action="/colleges/new_course"  method="post" style="margin: 0 auto; width: 60%; font-size: 40px;">
+        <div class="input-field" >
+          <input name="courseName" id="courseName" type="text" class="validate font_size">
+          <label for="courseName" class="font_size">Course Name</label>
+        </div>
+        <div class="input-field" >
+          <input name="description" id="description" type="text" class="fontss">
+          <label for="description" class="font_size">Description</label>
+        </div>
+        <div class="input-field" >
+          <input name="ratings" id="ratings" type="text" class="validate font_size">
+          <label for="ratings" class="font_size">Ratings</label>
+        </div>
+        <div class="input-field" >
+          <input name="courseMaterial" id="courseMaterial" type="text" class="validate font_size">
+          <label for="courseMaterial" class="font_size">Course Material</label>
+        </div>
+ <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-lg" >Add</button>
+        </div>    </form>
+</div>
+        </div>
+        
+        <!-- Modal footer -->
+       
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+  {{#each courses}}
+    <div class="col-md-4 s12 m4">
+      <div class="card">
+        <div class="card-content center-align">
+        <div><strong>Course Name : </strong>{{courseName}}</div>
+    <div><strong> Description : </strong> {{description}}</div>
+    <div><strong> Ratings : </strong>{{ratings}}</div>
+    <div><strong> Material Link: </strong><a href="{{courseMaterial}}">Click here</a></div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>

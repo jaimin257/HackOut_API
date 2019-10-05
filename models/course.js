@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const Lecture = require('./lecture');
+// const Lecture = require('./lecture');
 const Comment = require('./comment');
 
 const courseSchema = Schema({
@@ -8,7 +8,7 @@ const courseSchema = Schema({
         type: String,
         required: true
     },
-    intro: {
+    description: {
         type: String,
         required: true
     },
@@ -16,15 +16,19 @@ const courseSchema = Schema({
         type: String,
         required: true
     },
-    lectures: {
-        type: [Lecture],
+    courseMaterial: {
+        type: String,
         required: true
     },
-    comments: {
-        type: [Comment],
+    collegeEmail: {
+        type: String,
         required: true
     }
+    // comments: {
+    //     type: [Comment],
+    //     required: true
+    // }
 });
 
-const Course = mongoose.model('couse',courseSchema);
+const Course = mongoose.model('course',courseSchema);
 module.exports = Course;

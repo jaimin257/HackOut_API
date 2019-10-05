@@ -1,3 +1,4 @@
 module.exports = {
-    user : "none"
+    user : "none",
+    college_email : "none"
 };
