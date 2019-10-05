@@ -17,9 +17,6 @@ main {
   text-transform: capitalize;
 }
 
-#delete-form{
-  display:inline;
-}
 
 html {
   height: 100%;
@@ -60,4 +57,16 @@ html {
 
 .middle{
   position: relative;
+}
+
+.center_div{
+  margin: 0 auto;
+  color: red;
+  width: 100%;
+}
+
+.fontss{
+  font-size: 50px;
+  font-weight: bold;
+  color: red;
 }

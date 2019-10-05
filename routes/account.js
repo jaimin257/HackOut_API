@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
+const Event = require('../models/events')
+
 // const passport = require('passport');
 // const passportConf = require('../passport');
 
@@ -9,6 +12,12 @@ const router = express.Router();
 router.get('/',(req,res) => {
     res.render('index/welcome');
 });
+
+router.get('/login',(req,res) => {
+    res.render('index/login');
+});
+
+
 
 // router.route('/signUp')
 //     .post(

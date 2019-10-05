@@ -8,7 +8,7 @@ const lectureSchema = Schema({
         required: true
     },
     lectureLinks: {
-        tpye: [Links],
+        type: [Links],
         required: true
     }
 });
